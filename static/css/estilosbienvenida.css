@@ -6,6 +6,7 @@
     text-decoration: none;
     list-style: none;
     box-sizing: border-box;
+    
 }
 .slideshow {
   position: absolute;
@@ -163,6 +164,11 @@
 
 @media (max-width: 767px) {
   .slideshow-text {
-    font-size: 40px;
+    font-size: 30px;
+  }
+}
+@media (max-width: 500px) {
+  .slideshow-text {
+    font-size: 20px;
   }
 }
