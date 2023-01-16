@@ -38,6 +38,92 @@ body {
   background-image: linear-gradient(180deg, #e82727 -200px, #00000000 13%);
 }
 
+.table td {
+  padding: 15px 80px 0px 80px;
+}
+
+.table th {
+  padding: 15px 90px 0px 90px;
+}
+
+.botonedelete {
+  width: 80px;
+  height: 30px;
+  border: none;
+  border-radius: 5px;
+
+}
+
+.botonedelete:hover {
+  transition: all 0.3s;
+  background-color: #b12323c0;
+  color: white;
+}
+
+.botonaceptar {
+  width: 80px;
+  height: 30px;
+  border: none;
+  border-radius: 5px;
+
+}
+.btn {
+  color: black;
+  padding: 20px;
+  border-radius: 5px;
+  border:none;
+}
+.btn:hover{
+  background-color: #e82727;
+  transition: all 0.3s;
+
+  color: white;
+}
+.form-group{
+  margin: 20px 0px 20px 0px;
+}
+.row2{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+} 
+.col-lg-4{
+  color: white;
+  padding: 50px;
+}
+.botonaceptar:hover {
+  transition: all 0.3s;
+  background-color: #23b125c0;
+  color: white;
+}
+.vol{
+  color: black;
+  padding: 10px;
+  margin: 0 0 0 50px;
+  border: none;
+  border-radius: 5px;
+}
+.vol2{
+  color: black;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+}
+.vol2:hover{
+  transition: all 0.3s;
+  background-color: #e82727;
+  color: white;
+}
+#my-input{
+  padding: 10px;
+  border-radius: 10px;
+}
+.vol:hover{
+  transition: all 0.3s;
+  background-color: #e82727;
+  color: white;
+}
 .navbar {
   border: none;
   width: 100%;
@@ -46,12 +132,45 @@ body {
   justify-content: space-around;
   align-items: center;
   position: relative;
+  padding: 0px;
+  margin: 0px 0px 12px 0px;
 }
 
 .general {
   color: white;
 }
+.label{
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  margin: 5px;
+}
+.generalcrud {
+  height: 90vh;
+  overflow: scroll !important;
+  ;
+}
 
+.over {
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.over2 {
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 100px 0px 0px 0px;
+}
+.over3 {
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 70vh;
+}
 .izquierda input {
   color: white;
   padding: 10px 8px;
@@ -200,6 +319,19 @@ body {
 .titulo {
   display: flex;
   justify-content: center;
+}
+
+.centro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.centro p {
+  font-size: 15px;
+  padding: 0px;
 }
 
 a:link,
@@ -356,9 +488,58 @@ a:hover {
   transform: translate3d(125px, 0, 0);
 }
 
+@media screen and (max-width: 1110px) {
+  .table th {
+    padding: 0px 50px 0px 50px;
+  }
+
+  .table td {
+    padding: 0px;
+  }
+}
+@media screen and (max-width: 790px) {
+  .table th {
+    padding: 0px 20px 0px 20px;
+  }
+
+  .table td {
+    padding: 0px;
+  }
+}
+
 @media screen and (max-width: 500px) {
   * {
-    font-size: 20px;
+    font-size: 10px;
+  }
+
+  .over {
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 0px 0px 0px;
+  }
+
+  .table th {
+    padding: 0px 20px 0px 20px;
+  }
+
+  .table td {
+    padding: 0px;
+  }
+
+  .botonaceptar {
+    width: 60px;
+    height: 20px;
+    border: none;
+    border-radius: 5px;
+  }
+
+  .botonedelete {
+    width: 60px;
+    height: 20px;
+    border: none;
+    border-radius: 5px;
   }
 
   .derecha button {
@@ -374,29 +555,6 @@ a:hover {
   .fotosfotter img {
     width: 50%;
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
   .row__inner {
     transition: 450ms transform;
