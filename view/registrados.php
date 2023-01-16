@@ -53,21 +53,19 @@ if (!isset($_SESSION['correoadmin'])) {
         <!-- =================================================================-->
         <!-- =================================================================-->
         <a href="añadir.php"><button type="button" class="vol">EDITOR</button></a>
-        <a href="registrados.php"><button type="button" class="vol">REGISTRADOS</button></a>
+        <a href="admin.php"><button type="button" class="vol">REVISIÓN</button></a>
         <div class="generalcrud">
-            
-            <div class="over2">
-                <b>REVISIÓN</b>
+        
+            <div class="over">
+                <b>REGISTRADOS</b>
                 <table class="table" style="text-align:center;">
-
-                    <tr>
+                    <tr>                        
                         <th scope="col">#</th>
                         <th scope="col">NOMBRE</th>
                         <th scope="col">CORREO</th>
-                        <th scope="col">ACEPTAR</th>
-                        <th scope="col">DENEGAR</th>
+                        <th scope="col">ELIMINAR</th>
                     </tr>
-                    <tbody id="resultadomesa">
+                    <tbody id="resultadomesa2">
 
                     </tbody>
                 </table>

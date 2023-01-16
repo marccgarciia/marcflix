@@ -1,17 +1,3 @@
-<?php
-session_start();
-
-if (!isset($_SESSION['nombre']) && !isset($_SESSION['correoadmin'])) {
-    header('Location: loginregistro.php');
-} elseif (isset($_SESSION['nombre']) or isset($_SESSION['correoadmin'])) {
-
-    include '../config/conexion.php';
-    $sentencia = $bd->query("SELECT * FROM tbl_usuarios;");
-    $usuarios = $sentencia->fetchAll(PDO::FETCH_OBJ);
-} else {
-    echo "Error en el sistema";
-}
-?>
 <!--:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::-->
 <!--:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::-->
 <!--:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::-->
@@ -36,7 +22,6 @@ if (!isset($_SESSION['nombre']) && !isset($_SESSION['correoadmin'])) {
     <div class="container" id="1">
         <div class="navbar">
             <div class="izquierda">
-                <input type="text" placeholder="Buscar...">
             </div>
             <!-- =================================================================-->
             <div class="centro">
@@ -46,7 +31,8 @@ if (!isset($_SESSION['nombre']) && !isset($_SESSION['correoadmin'])) {
             </div>
             <!-- =================================================================-->
             <div class="derecha">
-                <a href="../controller/cerrarsesion.php"><button type="button">SALIR</button></a>
+            <a href="loginregistro.php"><button type="button">ENTRAR / REGISTRAR</button></a>
+
             </div>
         </div>
         <!-- =================================================================-->
@@ -82,10 +68,6 @@ if (!isset($_SESSION['nombre']) && !isset($_SESSION['correoadmin'])) {
                             $conn = mysqli_connect($server, $username, $password, $bd);
                             $query = "select * from tbl_series";
                             $resultado = mysqli_query($conn, $query);
-
-
-
-
                             ?>
                             <!-- ::::::::::::::::::::::::::::::::::::::::::::::::: -->
                             <!-- ::::::::::::::::::::::::::::::::::::::::::::::::: -->
@@ -97,10 +79,7 @@ if (!isset($_SESSION['nombre']) && !isset($_SESSION['correoadmin'])) {
 
                                     <div class="tile__details">
                                         <div class="tile__title">
-
-                                            <button class="like"><i class="fa-solid fa-heart"></i></button>
                                             <h1><?php echo $row['nombre']; ?></h1>
-                                            <p><i class="fa-regular fa-heart"></i> 102</p>
                                         </div>
                                     </div>
                                 </div>
@@ -112,65 +91,8 @@ if (!isset($_SESSION['nombre']) && !isset($_SESSION['correoadmin'])) {
             </div>
             <!-- =================================================================-->
             <!-- =================================================================-->
-            <div class="contenedor2" id="3">
-                <div class="contain">
-                    <div class="titulo">
-                        <h2><i class="fa-solid fa-bars"></i> TODO</h2>
-                    </div>
+            
                     <!-- =================================================================-->
-                    <div class="row">
-
-                        <div class="row__inner">
-                            <!-- ::::::::::::::::::::::::::::::::::::::::::::::::: -->
-                            <?php foreach ($resultado as $row) { ?>
-                                <div class="tile">
-                                    <div class="tile__media">
-                                        <img class="tile__img" src="fotos/<?php echo $row['ruta']; ?>" alt="" />
-                                    </div>
-
-                                    <div class="tile__details">
-                                        <div class="tile__title">
-                                            <!--BOTON LIKE-->
-                                            <button class="like" type="button" onclick=Like(<?php echo $row->id; ?>><i class="fa-solid fa-heart"></i></button>
-                                            <h1><?php echo $row['nombre']; ?></h1>
-                                            <p><i class="fa-regular fa-heart"></i> 102</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            <?php } ?>
-                        </div>
-                    </div>
-                    <!-- =================================================================-->
-                    <div class="contenedor2" id="4">
-                        <div class="contain">
-                            <div class="titulo">
-                                <h2><i class="fa-solid fa-heart"></i> MIS LIKES</h2>
-                            </div>
-                            <!-- =================================================================-->
-                            <div class="row">
-
-                                <div class="row__inner">
-                                    <!-- ::::::::::::::::::::::::::::::::::::::::::::::::: -->
-                                    <?php foreach ($resultado as $row) { ?>
-                                        <div class="tile">
-                                            <div class="tile__media">
-                                                <img class="tile__img" src="fotos/<?php echo $row['ruta']; ?>" alt="" />
-                                            </div>
-
-                                            <div class="tile__details">
-                                                <div class="tile__title">
-
-                                                    <button class="like"><i class="fa-solid fa-heart"></i></button>
-                                                    <h1><?php echo $row['nombre']; ?></h1>
-                                                    <p><i class="fa-regular fa-heart"></i> 102</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    <?php } ?>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
             <!-- ::::::::::::::::::::::::::::::::::::::::::::::::: -->
@@ -192,7 +114,6 @@ if (!isset($_SESSION['nombre']) && !isset($_SESSION['correoadmin'])) {
                     <p class="copyright">Marc García-Cuevas de Paz © 2022</p>
                 </footer>
             </div>
-            <script src="../static/js/like.js"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
 </body>

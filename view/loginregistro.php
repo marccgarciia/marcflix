@@ -13,41 +13,44 @@
 
 <body>
     <div class="general">
-    <main>
-        <div class="contenedor__todo">
-            <div class="caja__trasera">
-                <div class="caja__trasera-login">
-                    <h3>¿Ya tienes una cuenta?</h3>
-                    <p>Iniciar sesión para entrar en la página</p>
-                    <button id="btn__iniciar-sesion">Iniciar Sesión</button>
+        <main>
+            <div class="contenedor__todo">
+                <div class="caja__trasera">
+                    <div class="caja__trasera-login">
+                        <h3>¿Ya tienes una cuenta?</h3>
+                        <p>Iniciar sesión para entrar en la página</p>
+                        <button id="btn__iniciar-sesion">Iniciar Sesión</button>
+                    </div>
+                    <div class="caja__trasera-register">
+                        <h3>¿Aún no tienes una cuenta?</h3>
+                        <p>Regístrate para ver el mejor contenido</p>
+                        <button id="btn__register">Registrarse</button>
+                    </div>
                 </div>
-                <div class="caja__trasera-register">
-                    <h3>¿Aún no tienes una cuenta?</h3>
-                    <p>Regístrate para ver el mejor contenido</p>
-                    <button id="btn__register">Registrarse</button>
-                </div>
-            </div>
-            <!--Login y registro-->
-            <div class="contenedor__login-register">
-                <form action="" class="formulario__login">
-                    <h2>INICIAR SESIÓN</h2>
-                    <input type="text" placeholder="Correo Electronico">
-                    <input type="password" placeholder="Contraseña">
-                    <a href="principal.php"><button type="button" class="btn">Entrar</button></a>
-                </form>
+                <!--Login y registro-->
+                <div class="contenedor__login-register">
+                    <form method="POST" action="../controller/logincontroller.php" class="formulario__login">
+                        <h2>INICIAR SESIÓN</h2>
 
-                <!--Registro-->
-                <form action="" class="formulario__register">
-                    <h2>REGISTRARSE</h2>
-                    <input type="text" placeholder="Nombre Completo">
-                    <input type="text" placeholder="Correo Electronico">
-                    <input type="text" placeholder="Usuario">
-                    <input type="password" placeholder="Contraseña">
-                    <button class="btn">Registrarse</button>
-                </form>
+                        <input type="email" name="txtUsu" placeholder="Usuario" onkeyup="mail(this)" id="correo">
+                        <p id='resultadom'></p>
+                        <input type="password" name="txtPass" placeholder="Password" onkeyup="password(this)" id="pass">
+                        <br>
+                        <p id='resultadop'></p>
+
+                        <button type="submit" class="btn">Entrar</button></a>
+                    </form>
+                    <!--Registro-->
+                    <form method="POST" action="../controller/registrocontroller.php" class="formulario__register">
+                        <h2>REGISTRARSE</h2>
+                        <input type="text" name="txtNom" placeholder="Nombre" onkeyup="mail(this)" id="nombre">
+                        <input type="email" name="txtUsu" placeholder="Correo" onkeyup="mail(this)" id="correo">
+                        <input type="password" name="txtPass" placeholder="Password" onkeyup="password(this)" id="pass">
+                        <button type="submit" class="btn">Registrar</button></a>
+                    </form>
+                </div>
             </div>
-        </div>
-    </main>
+        </main>
     </div>
 
     <script src="../static/js/loginyregistro.js"></script>

@@ -49,7 +49,7 @@
         <!--::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::-->
         <!--::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::-->
         <div class="text">
-            <a href="loginregistro.php"><button type="submit">ENTRAR</button></a>
+            <a href="inicio.php"><button type="submit">ENTRAR</button></a>
         </div>
     </div>
 
