@@ -88,6 +88,14 @@ body {
   align-items: center;
   justify-content: center;
 } 
+.buscar{
+  color: white;
+  padding: 10px 8px;
+  border: 1px solid #8a1818c0;
+  border-radius: 3px;
+  background-color: rgba(0, 0, 0, 0);
+  margin: 0px 0px 20px 50px;
+}
 .col-lg-4{
   color: white;
   padding: 50px;

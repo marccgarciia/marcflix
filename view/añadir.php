@@ -128,7 +128,7 @@ $resultado = mysqli_query($conn, $query);
                         </div>
                     </div> -->
             </div>
-
+					<input class="buscar" type="text" name="buscar" id="buscar" placeholder="Buscar..." style="background-color: red;">
             <div class="over">
                 <table class="table" style="text-align:center;">
 

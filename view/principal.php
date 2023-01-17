@@ -36,7 +36,7 @@ if (!isset($_SESSION['nombre']) && !isset($_SESSION['correoadmin'])) {
     <div class="container" id="1">
         <div class="navbar">
             <div class="izquierda">
-                <input type="text" placeholder="Buscar...">
+                <!-- <input type="text" placeholder="Buscar..."> -->
             </div>
             <!-- =================================================================-->
             <div class="centro">
@@ -133,7 +133,16 @@ if (!isset($_SESSION['nombre']) && !isset($_SESSION['correoadmin'])) {
                                             <!--BOTON LIKE-->
                                             <button class="like" type="button" onclick=Like(<?php echo $row->id; ?>><i class="fa-solid fa-heart"></i></button>
                                             <h1><?php echo $row['nombre']; ?></h1>
-                                            <p><i class="fa-regular fa-heart"></i> 102</p>
+                                            <p><i class="fa-regular fa-heart"></i>
+                                            <?php 
+                                            $idconsulta =  $row['id'];
+                                            include '../config/conexion.php';
+                                            $sentencia6 = $bd->prepare("SELECT COUNT(*) FROM `tbl_likes` WHERE id_serie = ?;");
+                                            $sentencia6->bindParam(1, $idconsulta);
+                                            $resultado6 = $sentencia6->execute();
+                                            echo $idconsulta;
+                                            ?>
+                                            </p>
                                         </div>
                                     </div>
                                 </div>

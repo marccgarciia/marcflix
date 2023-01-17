@@ -2,8 +2,22 @@
 include_once '../config/conexion.php';
 
 if(isset($_POST['Guardar'])){
-    $imagen = $_FILES['imagen']['name'];
+    $imagen = time() . $_FILES['imagen']['name'];
     $nombre = $_POST['titulo'];
+
+
+	// $sentencia = $bd->prepare('select * from tbl_series where ruta = ?;');
+	// $sentencia->execute([$titulo]);
+	// $datos = $sentencia->fetch(PDO::FETCH_OBJ);
+
+	// if ($datos === FALSE) {
+	// 	header('Location: ../view/login.php');
+
+	// }elseif($sentencia->rowCount() == 1){
+	// 	header('Location: ../view/index.php');
+
+	// }
+
 
     if(isset($imagen) && $imagen != ""){
         $tipo = $_FILES['imagen']['type'];
