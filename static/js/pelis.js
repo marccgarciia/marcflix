@@ -1,8 +1,32 @@
-function ListarCrud() {
+// function ListarCrud() {
+
+//     let resultado = document.getElementById("resultadomesa");
+
+//     let formdata = new FormData();
+
+//     const ajax = new XMLHttpRequest();
+//     ajax.open('POST', '../controller/controllercrudpelis.php');
+//     ajax.onload = function() {
+//         if (ajax.status == 200) {
+//             resultado.innerHTML = ajax.responseText;
+//         } else {
+//             resultado.innerText = 'Error';
+//         }
+//     }
+//     ajax.send(formdata);
+// }
+
+
+// ListarCrud('');
+
+
+
+function ListarCrud(filtro) {
 
     let resultado = document.getElementById("resultadomesa");
 
     let formdata = new FormData();
+    formdata.append('filtro', filtro);
 
     const ajax = new XMLHttpRequest();
     ajax.open('POST', '../controller/controllercrudpelis.php');
@@ -16,6 +40,14 @@ function ListarCrud() {
     ajax.send(formdata);
 }
 
+buscar.addEventListener("keyup", () => {
+    const filtro = buscar.value;
+    if (filtro == "") {
+        ListarCrud('');
+    } else {
+        ListarCrud(filtro);
+    }
+});
 
 ListarCrud('');
 //:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::

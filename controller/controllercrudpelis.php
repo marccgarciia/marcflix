@@ -16,10 +16,8 @@ if (empty($_POST['filtro'])) {
 
     $filtro = $_POST['filtro'];
 
-    $sentencia = $bd->query("SELECT * FROM `tbl_series`  WHERE 
-    nombre LIKE '%" . $filtro . "%'
-    OR correo LIKE '%" . $filtro . "%'
-    OR contrasenya LIKE '%" . $filtro . "%'");
+    $sentencia = $bd->query("SELECT * FROM tbl_series  WHERE 
+    nombre LIKE '%" . $filtro . "%'");
 
     $series = $sentencia->fetchAll(PDO::FETCH_OBJ);
 }

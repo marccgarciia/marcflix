@@ -5,7 +5,6 @@
 	$usuario = $_POST['txtUsu'];
 	$contrasena = $_POST['txtPass'];
 
-
 	if (!empty($nombre && $usuario && $contrasena)) {
 
 		$sentencia = $bd->prepare("INSERT INTO `tbl_revision`(`nombre`, `correo`, `contrasenya`) VALUES (?,?,?);");
