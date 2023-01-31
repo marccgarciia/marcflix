@@ -12,6 +12,30 @@ if (!isset($_SESSION['nombre']) && !isset($_SESSION['correoadmin'])) {
     echo "Error en el sistema";
 }
 ?>
+
+<?php
+$server = 'localhost';
+$username = 'root';
+$password = '';
+$bd = 'bd_marcflix';
+
+$conn = mysqli_connect($server, $username, $password, $bd);
+$query = "select * from tbl_series";
+$resultado = mysqli_query($conn, $query);
+
+
+$correoa = $_SESSION['correoadmin'];
+$correon = $_SESSION['nombre'];
+
+$conn = mysqli_connect($server, $username, $password, $bd);
+$queryid = "SELECT `id_usuarios` FROM tbl_usuarios where correo =  '$correon' OR '$correoa';";
+$resultqueryid = mysqli_query($conn, $queryid);
+
+while ($row = $resultqueryid->fetch_assoc()) {
+    $idu = $row['id_usuarios'];
+}
+// echo $idu;
+?>
 <!--:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::-->
 <!--:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::-->
 <!--:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::-->
@@ -42,7 +66,7 @@ if (!isset($_SESSION['nombre']) && !isset($_SESSION['correoadmin'])) {
             <div class="centro">
                 <a href="principal.php"><img src="../static/img/logos/mn.png" alt="Logo Negro"></a>
                 <p><?php echo $_SESSION['nombre'];
-                    echo $_SESSION['correoadmin'] ?></p>
+                    echo $_SESSION['correoadmin']; ?></p>
             </div>
             <!-- =================================================================-->
             <div class="derecha">
@@ -72,22 +96,6 @@ if (!isset($_SESSION['nombre']) && !isset($_SESSION['correoadmin'])) {
                     <div class="row">
 
                         <div class="row__inner">
-
-                            <?php
-                            $server = 'localhost';
-                            $username = 'root';
-                            $password = '';
-                            $bd = 'bd_marcflix';
-
-                            $conn = mysqli_connect($server, $username, $password, $bd);
-                            $query = "select * from tbl_series";
-                            $resultado = mysqli_query($conn, $query);
-
-
-
-
-                            ?>
-                            <!-- ::::::::::::::::::::::::::::::::::::::::::::::::: -->
                             <!-- ::::::::::::::::::::::::::::::::::::::::::::::::: -->
                             <?php foreach ($resultado as $row) { ?>
                                 <div class="tile">
@@ -97,10 +105,32 @@ if (!isset($_SESSION['nombre']) && !isset($_SESSION['correoadmin'])) {
 
                                     <div class="tile__details">
                                         <div class="tile__title">
+                                            <!--BOTON LIKE-->
+                                            <?php $ids = $row['id']; ?>
 
-                                            <button class="like"><i class="fa-solid fa-heart"></i></button>
+                                            <form action="" method="POST" id="frm">
+                                                <input style="width: 20px; font-size:10px; position:absolute;" type="text" name="idu" id="idu" value="<?php echo $idu; ?>">
+                                                <input style="width: 20px; font-size:10px;  position:absolute; top:30px;" type="text" name="ids" id="ids" value="<?php echo $ids; ?>">
+                                                <button type="button" class="like" onclick="Like()"><i class="fa-solid fa-heart"></i></button>
+                                            </form>
                                             <h1><?php echo $row['nombre']; ?></h1>
-                                            <p><i class="fa-regular fa-heart"></i> 102</p>
+                                            <p><i class="fa-regular fa-heart"></i>
+                                                <?php
+
+                                                $server = 'localhost';
+                                                $username = 'root';
+                                                $password = '';
+                                                $bd = 'bd_marcflix';
+                                                $conexion = mysqli_connect($server, $username, $password, $bd);
+                                                
+                                                $idserie = $row['id'];
+                                                $rows = mysqli_query($conexion, "SELECT count(*)FROM tbl_likes where id_serie = $idserie;");
+
+                                                foreach ($rows as $row) {
+                                                    echo $row["count(*)"];
+                                                }
+                                                ?>
+                                            </p>
                                         </div>
                                     </div>
                                 </div>
@@ -131,17 +161,24 @@ if (!isset($_SESSION['nombre']) && !isset($_SESSION['correoadmin'])) {
                                     <div class="tile__details">
                                         <div class="tile__title">
                                             <!--BOTON LIKE-->
-                                            <button class="like" type="button" onclick=Like(<?php echo $row->id; ?>><i class="fa-solid fa-heart"></i></button>
+                                            <button class="like" type="button" onclick=Like(<?php echo $row['id']; ?>><i class="fa-solid fa-heart"></i></button>
                                             <h1><?php echo $row['nombre']; ?></h1>
                                             <p><i class="fa-regular fa-heart"></i>
-                                            <?php 
-                                            $idconsulta =  $row['id'];
-                                            include '../config/conexion.php';
-                                            $sentencia6 = $bd->prepare("SELECT COUNT(*) FROM `tbl_likes` WHERE id_serie = ?;");
-                                            $sentencia6->bindParam(1, $idconsulta);
-                                            $resultado6 = $sentencia6->execute();
-                                            echo $idconsulta;
-                                            ?>
+                                                <?php
+
+                                                $server = 'localhost';
+                                                $username = 'root';
+                                                $password = '';
+                                                $bd = 'bd_marcflix';
+                                                $conexion = mysqli_connect($server, $username, $password, $bd);
+
+                                                $idserie = $row['id'];
+                                                $rows = mysqli_query($conexion, "SELECT count(*)FROM tbl_likes where id_serie = $idserie;");
+
+                                                foreach ($rows as $row) {
+                                                    echo $row["count(*)"];
+                                                }
+                                                ?>
                                             </p>
                                         </div>
                                     </div>
@@ -168,10 +205,26 @@ if (!isset($_SESSION['nombre']) && !isset($_SESSION['correoadmin'])) {
 
                                             <div class="tile__details">
                                                 <div class="tile__title">
-
-                                                    <button class="like"><i class="fa-solid fa-heart"></i></button>
+                                                    <!--BOTON LIKE-->
+                                                    <button class="like" type="button" onclick=Like(<?php echo $row->id; ?>><i class="fa-solid fa-heart"></i></button>
                                                     <h1><?php echo $row['nombre']; ?></h1>
-                                                    <p><i class="fa-regular fa-heart"></i> 102</p>
+                                                    <p><i class="fa-regular fa-heart"></i>
+                                                        <?php
+
+                                                        $server = 'localhost';
+                                                        $username = 'root';
+                                                        $password = '';
+                                                        $bd = 'bd_marcflix';
+                                                        $conexion = mysqli_connect($server, $username, $password, $bd);
+
+                                                        $idserie = $row['id'];
+                                                        $rows = mysqli_query($conexion, "SELECT count(*)FROM tbl_likes where id_serie = $idserie;");
+
+                                                        foreach ($rows as $row) {
+                                                            echo $row["count(*)"];
+                                                        }
+                                                        ?>
+                                                    </p>
                                                 </div>
                                             </div>
                                         </div>
@@ -201,7 +254,7 @@ if (!isset($_SESSION['nombre']) && !isset($_SESSION['correoadmin'])) {
                     <p class="copyright">Marc García-Cuevas de Paz © 2022</p>
                 </footer>
             </div>
-            <script src="../static/js/like.js"></script>
+            <script src="like.js"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
 </body>
